@@ -1,4 +1,3 @@
-
 import React, { useState } from "react";
 import { toast } from "sonner";
 const DetailsSection = () => {
@@ -142,7 +141,7 @@ const DetailsSection = () => {
                 Request a demo
               </div>
               <h2 className="text-2xl sm:text-3xl font-display text-white font-bold mt-auto">
-                See it for yourself
+                Join the Waitlist  
               </h2>
             </div>
             
@@ -153,45 +152,19 @@ const DetailsSection = () => {
           }}>
               <form onSubmit={handleSubmit} className="space-y-4 sm:space-y-6">
                 <div>
-                  <input 
-                    type="text" 
-                    name="fullName" 
-                    value={formData.fullName} 
-                    onChange={handleChange} 
-                    placeholder="Full name" 
-                    className="w-full px-4 py-3 rounded-xl border border-gray-300 focus:outline-none focus:ring-2 focus:ring-pulse-500 focus:border-transparent" 
-                    required 
-                  />
+                  <input type="text" name="fullName" value={formData.fullName} onChange={handleChange} placeholder="Full name" className="w-full px-4 py-3 rounded-xl border border-gray-300 focus:outline-none focus:ring-2 focus:ring-pulse-500 focus:border-transparent" required />
                 </div>
                 
                 <div>
-                  <input 
-                    type="email" 
-                    name="email" 
-                    value={formData.email} 
-                    onChange={handleChange} 
-                    placeholder="Email address" 
-                    className="w-full px-4 py-3 rounded-xl border border-gray-300 focus:outline-none focus:ring-2 focus:ring-pulse-500 focus:border-transparent" 
-                    required 
-                  />
+                  <input type="email" name="email" value={formData.email} onChange={handleChange} placeholder="Email address" className="w-full px-4 py-3 rounded-xl border border-gray-300 focus:outline-none focus:ring-2 focus:ring-pulse-500 focus:border-transparent" required />
                 </div>
                 
                 <div>
-                  <input 
-                    type="text" 
-                    name="company" 
-                    value={formData.company} 
-                    onChange={handleChange} 
-                    placeholder="Company (optional)" 
-                    className="w-full px-4 py-3 rounded-xl border border-gray-300 focus:outline-none focus:ring-2 focus:ring-pulse-500 focus:border-transparent" 
-                  />
+                  <input type="text" name="company" value={formData.company} onChange={handleChange} placeholder="Company (optional)" className="w-full px-4 py-3 rounded-xl border border-gray-300 focus:outline-none focus:ring-2 focus:ring-pulse-500 focus:border-transparent" />
                 </div>
                 
                 <div>
-                  <button 
-                    type="submit" 
-                    className="w-full px-6 py-3 bg-pulse-500 hover:bg-pulse-600 text-white font-medium rounded-full transition-colors duration-300"
-                  >
+                  <button type="submit" className="w-full px-6 py-3 bg-pulse-500 hover:bg-pulse-600 text-white font-medium rounded-full transition-colors duration-300">
                     Request access
                   </button>
                 </div>
