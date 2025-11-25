@@ -37,7 +37,7 @@ const DetailsSection = () => {
   };
   return <section id="details" className="w-full bg-white py-0">
       <div className="container px-4 sm:px-6 lg:px-8 mx-auto">
-        <div className="grid grid-cols-1 gap-6 md:gap-8 lg:grid-cols-2">
+        <div className="grid grid-cols-1 gap-6 md:gap-8">
           {/* Left Card - The Details */}
           <div className="rounded-2xl sm:rounded-3xl overflow-hidden shadow-elegant">
             {/* Card Header with background image instead of gradient */}
