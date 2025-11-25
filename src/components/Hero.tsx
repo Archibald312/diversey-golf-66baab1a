@@ -84,7 +84,7 @@ const Hero = () => {
             animationDelay: "0.3s"
           }}>
               Unlimited Golf
-24/7 Access <br className="hidden sm:inline" />Meets Motion
+24/7 Access   <br className="hidden sm:inline" />Meets Motion
             </h1>
             
             <p style={{
