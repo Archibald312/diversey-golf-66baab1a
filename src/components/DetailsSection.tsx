@@ -46,8 +46,8 @@ const DetailsSection = () => {
             backgroundSize: "cover",
             backgroundPosition: "center"
           }}>
-              <h2 className="text-2xl sm:text-3xl font-display text-white font-bold">
-                The details
+              <h2 className="text-2xl sm:text-3xl font-display text-white font-bold text-center">
+                Frequently Asked Questions  
               </h2>
             </div>
             
@@ -56,8 +56,8 @@ const DetailsSection = () => {
             backgroundColor: "#FFFFFF",
             border: "1px solid #ECECEC"
           }}>
-              <h3 className="text-lg sm:text-xl font-display mb-6 sm:mb-8">
-                Precision engineering meets adaptive intelligence
+              <h3 className="text-lg sm:text-xl font-display mb-6 sm:mb-8 text-center">
+                Everything you need to know about Diversey Swing
               </h3>
 
               <div className="space-y-4 sm:space-y-6">
