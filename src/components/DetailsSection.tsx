@@ -65,46 +65,55 @@ const DetailsSection = () => {
               <Accordion type="single" collapsible className="w-full">
                 <AccordionItem value="item-1">
                   <AccordionTrigger className="text-left font-semibold">
-                    What are the dimensions of Diversey Swing?
+                    How much is the monthly membership?
                   </AccordionTrigger>
                   <AccordionContent>
-                    Diversey Swing stands at 5'8" tall and weighs 140lbs, making it perfectly sized for human-scale environments and tasks.
+                    Founding members pay $200 per month with long-term commitment.
                   </AccordionContent>
                 </AccordionItem>
 
                 <AccordionItem value="item-2">
                   <AccordionTrigger className="text-left font-semibold">
-                    How much weight can it carry?
+                    When will Diversey Swing open?
                   </AccordionTrigger>
                   <AccordionContent>
-                    The robot has a carrying capacity of 55lbs, suitable for a wide range of industrial and commercial applications.
+                    Diversey Swing is scheduled to open in the winter of 2026. Join the waitlist for updates on our progress.
                   </AccordionContent>
                 </AccordionItem>
 
                 <AccordionItem value="item-3">
                   <AccordionTrigger className="text-left font-semibold">
-                    What is the battery life?
+                    Where will Diversey Swing be located?
                   </AccordionTrigger>
                   <AccordionContent>
-                    Diversey Swing operates for up to 6 hours on a single charge, ensuring full-day productivity for most use cases.
+                    Diversey Swing will be located within a 10-minute walk of Clark & Diversey.
                   </AccordionContent>
                 </AccordionItem>
 
                 <AccordionItem value="item-4">
                   <AccordionTrigger className="text-left font-semibold">
-                    How fast can it move?
+                    Is it truly unlimited golf?
                   </AccordionTrigger>
                   <AccordionContent>
-                    The robot moves at a speed of 1.5 meters per second, providing efficient mobility while maintaining safety in shared spaces.
+                    Yes! Your monthly membership gives you unlimited access to our golf simulators 24/7. Use our app to reserve your tee time.
                   </AccordionContent>
                 </AccordionItem>
 
                 <AccordionItem value="item-5">
                   <AccordionTrigger className="text-left font-semibold">
-                    What industries is it designed for?
+                    Can I bring friends?
                   </AccordionTrigger>
                   <AccordionContent>
-                    Diversey Swing is designed for cleaning, hospitality, healthcare, and retail industries where reliable automation can improve efficiency and reduce operational costs.
+                    Absolutely! You're welcome to bring friends and family to enjoy the simulators with you during your sessions. We suggest that you limit guests to three.
+                  </AccordionContent>
+                </AccordionItem>
+
+                <AccordionItem value="item-6">
+                  <AccordionTrigger className="text-left font-semibold">
+                    What are your hours?
+                  </AccordionTrigger>
+                  <AccordionContent>
+                    Our simulators are available 24/7 with your membership. You'll have key card access to play anytime.
                   </AccordionContent>
                 </AccordionItem>
               </Accordion>
