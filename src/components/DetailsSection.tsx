@@ -1,5 +1,11 @@
 import React, { useState } from "react";
 import { toast } from "sonner";
+import {
+  Accordion,
+  AccordionContent,
+  AccordionItem,
+  AccordionTrigger,
+} from "@/components/ui/accordion";
 const DetailsSection = () => {
   const [formData, setFormData] = useState({
     fullName: "",
@@ -56,76 +62,52 @@ const DetailsSection = () => {
             backgroundColor: "#FFFFFF",
             border: "1px solid #ECECEC"
           }}>
-              <h3 className="text-lg sm:text-xl font-display mb-6 sm:mb-8 text-center">
-                Everything you need to know about Diversey Swing
-              </h3>
+              <Accordion type="single" collapsible className="w-full">
+                <AccordionItem value="item-1">
+                  <AccordionTrigger className="text-left font-semibold">
+                    What are the dimensions of Diversey Swing?
+                  </AccordionTrigger>
+                  <AccordionContent>
+                    Diversey Swing stands at 5'8" tall and weighs 140lbs, making it perfectly sized for human-scale environments and tasks.
+                  </AccordionContent>
+                </AccordionItem>
 
-              <div className="space-y-4 sm:space-y-6">
-                <div className="flex items-start gap-3">
-                  <div className="w-6 h-6 rounded-full bg-dark-900 flex items-center justify-center mt-1 flex-shrink-0">
-                    <svg width="14" height="10" viewBox="0 0 14 10" fill="none" xmlns="http://www.w3.org/2000/svg">
-                      <path d="M1 5L5 9L13 1" stroke="white" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
-                    </svg>
-                  </div>
-                  <div className="flex-1">
-                    <div className="p-3 rounded-lg bg-gray-50/80 backdrop-blur-sm border border-gray-100">
-                      <span className="font-semibold text-base">Height:</span> 5'8"
-                    </div>
-                  </div>
-                </div>
+                <AccordionItem value="item-2">
+                  <AccordionTrigger className="text-left font-semibold">
+                    How much weight can it carry?
+                  </AccordionTrigger>
+                  <AccordionContent>
+                    The robot has a carrying capacity of 55lbs, suitable for a wide range of industrial and commercial applications.
+                  </AccordionContent>
+                </AccordionItem>
 
-                <div className="flex items-start gap-3">
-                  <div className="w-6 h-6 rounded-full bg-dark-900 flex items-center justify-center mt-1 flex-shrink-0">
-                    <svg width="14" height="10" viewBox="0 0 14 10" fill="none" xmlns="http://www.w3.org/2000/svg">
-                      <path d="M1 5L5 9L13 1" stroke="white" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
-                    </svg>
-                  </div>
-                  <div className="flex-1">
-                    <div className="p-3 rounded-lg bg-gray-50/80 backdrop-blur-sm border border-gray-100">
-                      <span className="font-semibold text-base">Capacity:</span> 55lbs
-                    </div>
-                  </div>
-                </div>
+                <AccordionItem value="item-3">
+                  <AccordionTrigger className="text-left font-semibold">
+                    What is the battery life?
+                  </AccordionTrigger>
+                  <AccordionContent>
+                    Diversey Swing operates for up to 6 hours on a single charge, ensuring full-day productivity for most use cases.
+                  </AccordionContent>
+                </AccordionItem>
 
-                <div className="flex items-start gap-3">
-                  <div className="w-6 h-6 rounded-full bg-dark-900 flex items-center justify-center mt-1 flex-shrink-0">
-                    <svg width="14" height="10" viewBox="0 0 14 10" fill="none" xmlns="http://www.w3.org/2000/svg">
-                      <path d="M1 5L5 9L13 1" stroke="white" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
-                    </svg>
-                  </div>
-                  <div className="flex-1">
-                    <div className="p-3 rounded-lg bg-gray-50/80 backdrop-blur-sm border border-gray-100">
-                      <span className="font-semibold text-base">Weight:</span> 140lbs
-                    </div>
-                  </div>
-                </div>
+                <AccordionItem value="item-4">
+                  <AccordionTrigger className="text-left font-semibold">
+                    How fast can it move?
+                  </AccordionTrigger>
+                  <AccordionContent>
+                    The robot moves at a speed of 1.5 meters per second, providing efficient mobility while maintaining safety in shared spaces.
+                  </AccordionContent>
+                </AccordionItem>
 
-                <div className="flex items-start gap-3">
-                  <div className="w-6 h-6 rounded-full bg-dark-900 flex items-center justify-center mt-1 flex-shrink-0">
-                    <svg width="14" height="10" viewBox="0 0 14 10" fill="none" xmlns="http://www.w3.org/2000/svg">
-                      <path d="M1 5L5 9L13 1" stroke="white" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
-                    </svg>
-                  </div>
-                  <div className="flex-1">
-                    <div className="p-3 rounded-lg bg-gray-50/80 backdrop-blur-sm border border-gray-100">
-                      <span className="font-semibold text-base">Uptime:</span> 6hr
-                    </div>
-                  </div>
-                </div>
-
-                <div className="flex items-start gap-3">
-                  <div className="w-6 h-6 rounded-full bg-dark-900 flex items-center justify-center mt-1 flex-shrink-0">
-                    <svg width="14" height="10" viewBox="0 0 14 10" fill="none" xmlns="http://www.w3.org/2000/svg">
-                      <path d="M1 5L5 9L13 1" stroke="white" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
-                    </svg>
-                  </div>
-                  <div className="flex-1">
-                    <div className="p-3 rounded-lg bg-gray-50/80 backdrop-blur-sm border border-gray-100">
-                      <span className="font-semibold text-base">Movement:</span> 1.5M/S
-                    </div>
-                  </div>
-                </div>
-              </div>
+                <AccordionItem value="item-5">
+                  <AccordionTrigger className="text-left font-semibold">
+                    What industries is it designed for?
+                  </AccordionTrigger>
+                  <AccordionContent>
+                    Diversey Swing is designed for cleaning, hospitality, healthcare, and retail industries where reliable automation can improve efficiency and reduce operational costs.
+                  </AccordionContent>
+                </AccordionItem>
+              </Accordion>
             </div>
           </div>
 
