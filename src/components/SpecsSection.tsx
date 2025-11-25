@@ -1,9 +1,6 @@
-
 import React from "react";
-
 const SpecsSection = () => {
-  return (
-    <section className="w-full py-6 sm:py-10 bg-white" id="specifications">
+  return <section className="w-full py-6 sm:py-10 bg-white" id="specifications">
       <div className="container px-4 sm:px-6 lg:px-8 mx-auto">
         {/* Header with badge and line */}
         <div className="flex items-center gap-4 mb-8 sm:mb-16">
@@ -25,8 +22,6 @@ const SpecsSection = () => {
           </h2>
         </div>
       </div>
-    </section>
-  );
+    </section>;
 };
-
 export default SpecsSection;

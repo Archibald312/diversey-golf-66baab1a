@@ -1,6 +1,4 @@
-
 import React, { useRef } from "react";
-
 interface TestimonialProps {
   content: string;
   author: string;
@@ -8,7 +6,6 @@ interface TestimonialProps {
   gradient: string;
   backgroundImage?: string;
 }
-
 const testimonials: TestimonialProps[] = [{
   content: "Atlas transformed our production line, handling repetitive tasks while our team focuses on innovation. 30% increase in output within three months.",
   author: "Sarah Chen",
@@ -34,7 +31,6 @@ const testimonials: TestimonialProps[] = [{
   gradient: "from-orange-600 via-red-500 to-purple-600",
   backgroundImage: "/background-section1.png"
 }];
-
 const TestimonialCard = ({
   content,
   author,
@@ -55,18 +51,11 @@ const TestimonialCard = ({
       </div>
     </div>;
 };
-
 const Testimonials = () => {
   const sectionRef = useRef<HTMLDivElement>(null);
-
   return <section className="py-12 bg-white relative" id="testimonials" ref={sectionRef}> {/* Reduced from py-20 */}
       <div className="section-container opacity-0 animate-on-scroll">
-        <div className="flex items-center gap-4 mb-6">
-          <div className="pulse-chip">
-            <span className="inline-flex items-center justify-center w-5 h-5 rounded-full bg-pulse-500 text-white mr-2">04</span>
-            <span>Testimonials</span>
-          </div>
-        </div>
+        
         
         <h2 className="text-5xl font-display font-bold mb-12 text-left">What others say</h2>
         
@@ -76,5 +65,4 @@ const Testimonials = () => {
       </div>
     </section>;
 };
-
 export default Testimonials;
