@@ -1,11 +1,6 @@
 import React, { useState } from "react";
 import { toast } from "sonner";
-import {
-  Accordion,
-  AccordionContent,
-  AccordionItem,
-  AccordionTrigger,
-} from "@/components/ui/accordion";
+import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
 const DetailsSection = () => {
   const [formData, setFormData] = useState({
     fullName: "",
@@ -128,9 +123,7 @@ const DetailsSection = () => {
             backgroundSize: "cover",
             backgroundPosition: "center"
           }}>
-              <div className="inline-block px-4 sm:px-6 py-2 border border-white text-white rounded-full text-xs mb-4">
-                Request a demo
-              </div>
+              
               <h2 className="text-2xl sm:text-3xl font-display text-white font-bold mt-auto">
                 Join the Waitlist  
               </h2>

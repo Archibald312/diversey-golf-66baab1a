@@ -73,9 +73,7 @@ const Features = () => {
   return <section className="py-12 sm:py-16 md:py-20 pb-0 relative bg-gray-50" id="features" ref={sectionRef}>
       <div className="section-container">
         <div className="text-center mb-10 sm:mb-16">
-          <div className="pulse-chip mx-auto mb-3 sm:mb-4 opacity-0 fade-in-element">
-            <span>Features</span>
-          </div>
+          
           <h2 className="section-title mb-3 sm:mb-4 opacity-0 fade-in-element">
             Why Join Diversey Swing
           </h2>
