@@ -82,9 +82,8 @@ const Hero = () => {
             
             <h1 className="section-title text-3xl sm:text-4xl lg:text-5xl xl:text-6xl leading-tight opacity-0 animate-fade-in" style={{
             animationDelay: "0.3s"
-          }}>
-              Unlimited Golf
-24/7 Access   <br className="hidden sm:inline" />Meets Motion
+          }}>Unlimited Golf
+24/7 Access<br className="hidden sm:inline" />Meets Motion
             </h1>
             
             <p style={{
@@ -117,11 +116,11 @@ const Hero = () => {
           <div className="w-full lg:w-1/2 relative mt-6 lg:mt-0">
             <div className="absolute inset-0 bg-dark-900 rounded-2xl sm:rounded-3xl -z-10 shadow-xl"></div>
             <div className="relative transition-all duration-500 ease-out overflow-hidden rounded-2xl sm:rounded-3xl shadow-2xl animate-fade-in" style={{
-              animationDelay: "0.9s"
-            }}>
+            animationDelay: "0.9s"
+          }}>
               <img ref={imageRef} src="/golf-simulator.jpg" alt="Golf Simulator" className="w-full h-auto object-cover transition-transform duration-500 ease-out" style={{
-                transformStyle: 'preserve-3d'
-              }} />
+              transformStyle: 'preserve-3d'
+            }} />
             </div>
           </div>
         </div>
