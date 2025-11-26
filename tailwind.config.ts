@@ -63,19 +63,19 @@ export default {
 					border: 'hsl(var(--sidebar-border))',
 					ring: 'hsl(var(--sidebar-ring))'
 				},
-				// Custom colors for Pulse Robot
+				// Custom colors for Diversey Golf
 				pulse: {
-					"50": "#fff7ed",
-					"100": "#ffedd5",
-					"200": "#fed7aa",
-					"300": "#fdba74",
-					"400": "#fb923c",
-					"500": "#f97316", // Primary orange
-					"600": "#ea580c",
-					"700": "#c2410c",
-					"800": "#9a3412",
-					"900": "#7c2d12",
-					"950": "#431407",
+					"50": "#e6f5f1",
+					"100": "#ccebe3",
+					"200": "#99d7c7",
+					"300": "#66c3ab",
+					"400": "#33af8f",
+					"500": "#0b4d3a", // Primary brand color
+					"600": "#094432",
+					"700": "#073b2b",
+					"800": "#053223",
+					"900": "#03291c",
+					"950": "#011f14",
 				},
 				dark: {
 					"900": "#121212", // Almost black
@@ -137,9 +137,9 @@ export default {
 				'float': 'float 6s ease-in-out infinite'
 			},
 			backgroundImage: {
-				'hero-gradient': 'linear-gradient(90deg, hsla(24, 100%, 83%, 1) 0%, hsla(341, 91%, 68%, 1) 100%)',
-				'hero-gradient-2': 'linear-gradient(90deg, hsla(39, 100%, 77%, 1) 0%, hsla(22, 90%, 57%, 1) 100%)',
-				'pulse-gradient': 'linear-gradient(180deg, rgba(249,115,22,0.8) 0%, rgba(249,115,22,0) 100%)',
+				'hero-gradient': 'linear-gradient(90deg, hsla(160, 85%, 45%, 1) 0%, hsla(160, 77%, 25%, 1) 100%)',
+				'hero-gradient-2': 'linear-gradient(90deg, hsla(160, 70%, 50%, 1) 0%, hsla(160, 77%, 17%, 1) 100%)',
+				'pulse-gradient': 'linear-gradient(180deg, rgba(11,77,58,0.8) 0%, rgba(11,77,58,0) 100%)',
 			},
 			fontFamily: {
 				'sans': ['Inter', 'sans-serif'],
