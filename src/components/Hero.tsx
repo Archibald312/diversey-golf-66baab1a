@@ -117,14 +117,16 @@ const Hero = () => {
             </div>
           </div>
           
-          <div className="w-full lg:w-1/2 relative mt-6 lg:mt-0">
-            <div className="absolute inset-0 bg-dark-900 rounded-2xl sm:rounded-3xl -z-10 shadow-xl"></div>
-            <div className="relative transition-all duration-500 ease-out overflow-hidden rounded-2xl sm:rounded-3xl shadow-2xl animate-fade-in" style={{
-            animationDelay: "0.9s"
-          }}>
-              <img ref={imageRef} src="/golf-simulator.jpg" alt="Golf Simulator" className="w-full h-auto object-cover transition-transform duration-500 ease-out" style={{
-              transformStyle: 'preserve-3d'
-            }} />
+          <div className="w-full lg:w-1/2 relative mt-6 lg:mt-0 flex justify-center lg:justify-end">
+            <div className="w-[80%] relative">
+              <div className="absolute inset-0 bg-dark-900 rounded-2xl sm:rounded-3xl -z-10 shadow-xl"></div>
+              <div className="relative transition-all duration-500 ease-out overflow-hidden rounded-2xl sm:rounded-3xl shadow-2xl animate-fade-in" style={{
+              animationDelay: "0.9s"
+            }}>
+                <img ref={imageRef} src="/golf-simulator.jpg" alt="Golf Simulator" className="w-full h-auto object-cover transition-transform duration-500 ease-out" style={{
+                transformStyle: 'preserve-3d'
+              }} />
+              </div>
             </div>
           </div>
         </div>
