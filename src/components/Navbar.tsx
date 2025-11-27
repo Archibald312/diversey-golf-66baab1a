@@ -36,7 +36,7 @@ const Navbar = () => {
         e.preventDefault();
         scrollToTop();
       }} aria-label="Diversey Golf">
-          <img src="/diversey-golf-logo.png" alt="Diversey Golf Logo" className="h-10 sm:h-12" />
+          <img src="/diversey-golf-logo.png" alt="Diversey Golf Logo" className="h-20 sm:h-24" />
         </a>
 
         {/* Desktop Navigation */}
