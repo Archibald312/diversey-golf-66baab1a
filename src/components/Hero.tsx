@@ -71,13 +71,13 @@ const Hero = () => {
   return <section className="overflow-hidden relative bg-white" id="hero" style={{
     padding: isMobile ? '100px 12px 40px' : '120px 20px 60px'
   }}>
-      {/* Multi-layered radial gradients blending from white to brand green */}
-      <div className="absolute -top-[15%] -right-[10%] w-[60%] h-[80%] rounded-full blur-3xl opacity-30" 
-           style={{ background: 'radial-gradient(circle at center, rgba(230, 245, 241, 0.9) 0%, rgba(102, 195, 171, 0.4) 35%, rgba(11, 77, 58, 0.2) 70%, transparent 100%)' }}></div>
-      <div className="absolute top-[20%] -right-[5%] w-[45%] h-[60%] rounded-full blur-3xl opacity-25" 
-           style={{ background: 'radial-gradient(circle at center, rgba(204, 235, 227, 0.7) 0%, rgba(51, 175, 143, 0.3) 50%, transparent 100%)' }}></div>
-      <div className="absolute top-[5%] right-[10%] w-[35%] h-[50%] rounded-full blur-2xl opacity-20" 
-           style={{ background: 'radial-gradient(circle at center, rgba(255, 255, 255, 0.9) 0%, rgba(230, 245, 241, 0.5) 40%, rgba(153, 215, 199, 0.2) 70%, transparent 100%)' }}></div>
+      {/* Soft mint/teal gradients blending into white - matching mockup */}
+      <div className="absolute top-0 right-0 w-full h-full rounded-full blur-3xl opacity-40" 
+           style={{ background: 'radial-gradient(ellipse 80% 70% at 85% 40%, rgba(153, 215, 199, 0.35) 0%, rgba(204, 235, 227, 0.25) 35%, rgba(230, 245, 241, 0.15) 60%, transparent 85%)' }}></div>
+      <div className="absolute -top-[10%] -left-[5%] w-[70%] h-[90%] rounded-full blur-3xl opacity-30" 
+           style={{ background: 'radial-gradient(ellipse 65% 75% at 25% 35%, rgba(230, 245, 241, 0.4) 0%, rgba(204, 235, 227, 0.25) 40%, rgba(153, 215, 199, 0.12) 65%, transparent 90%)' }}></div>
+      <div className="absolute bottom-[10%] right-[15%] w-[50%] h-[60%] rounded-full blur-3xl opacity-25" 
+           style={{ background: 'radial-gradient(circle at center, rgba(204, 235, 227, 0.35) 0%, rgba(230, 245, 241, 0.2) 50%, transparent 80%)' }}></div>
       
       <div className="container px-4 sm:px-6 lg:px-8" ref={containerRef}>
         <div className="flex flex-col lg:flex-row gap-6 lg:gap-12 items-center">
@@ -130,11 +130,9 @@ const Hero = () => {
         </div>
       </div>
       
-      {/* Bottom left gradient accent */}
-      <div className="hidden lg:block absolute bottom-0 left-1/4 w-80 h-80 rounded-full blur-3xl opacity-20 -z-10 parallax" data-speed="0.05"
-           style={{ background: 'radial-gradient(circle at center, rgba(204, 235, 227, 0.8) 0%, rgba(102, 195, 171, 0.4) 40%, rgba(11, 77, 58, 0.1) 70%, transparent 100%)' }}></div>
-      <div className="hidden lg:block absolute bottom-[10%] left-[15%] w-64 h-64 rounded-full blur-2xl opacity-15 -z-10"
-           style={{ background: 'radial-gradient(circle at center, rgba(255, 255, 255, 0.7) 0%, rgba(230, 245, 241, 0.4) 50%, transparent 100%)' }}></div>
+      {/* Subtle bottom accent gradients */}
+      <div className="hidden lg:block absolute bottom-[5%] left-[20%] w-96 h-96 rounded-full blur-3xl opacity-20 -z-10 parallax" data-speed="0.05"
+           style={{ background: 'radial-gradient(circle at center, rgba(230, 245, 241, 0.5) 0%, rgba(204, 235, 227, 0.3) 45%, rgba(153, 215, 199, 0.15) 70%, transparent 100%)' }}></div>
     </section>;
 };
 export default Hero;
