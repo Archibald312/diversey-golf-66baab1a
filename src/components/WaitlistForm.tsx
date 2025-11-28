@@ -25,7 +25,13 @@ const WaitlistForm = () => {
       });
       if (!response.ok) {
         const errorData = await response.json();
-        toast.error(errorData.error || "Failed to join waitlist");
+        toast.error(errorData.error || "Failed to join waitlist", {
+          style: {
+            color: '#dc2626',
+            backgroundColor: '#fee2e2',
+            border: '1px solid #fecaca'
+          }
+        });
         return;
       }
       toast.success("Request submitted successfully!");

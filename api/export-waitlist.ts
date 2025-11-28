@@ -4,7 +4,7 @@ import { VercelRequest, VercelResponse } from '@vercel/node';
 function toCSV(rows: any[]): string {
   if (!rows.length) return '';
   const header = Object.keys(rows[0]);
-  const escape = (val: any) => `"${String(val).replace(/"/g, '""')}`;
+  const escape = (val: any) => `"${String(val).replace(/"/g, '""')}"`;
   return [
     header.join(','),
     ...rows.map(row => header.map(field => escape(row[field] ?? '')).join(','))
@@ -12,9 +12,13 @@ function toCSV(rows: any[]): string {
 }
 
 export default async function handler(req: VercelRequest, res: VercelResponse) {
-  // Optional: Add a simple secret for security
-  const secret = req.query.secret;
-  if (process.env.EXPORT_SECRET && secret !== process.env.EXPORT_SECRET) {
+  // Require Authorization header with a server-side secret.
+  // Query-string based secrets are not accepted.
+  const auth = req.headers.authorization as string | undefined;
+  if (!process.env.EXPORT_SECRET) {
+    return res.status(403).json({ error: 'Export disabled (no EXPORT_SECRET configured)' });
+  }
+  if (!auth || auth !== `Bearer ${process.env.EXPORT_SECRET}`) {
     return res.status(401).json({ error: 'Unauthorized' });
   }
 
@@ -31,11 +35,24 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
       return res.status(200).send(csv);
     }
 
+    if (!process.env.BLOB_READ_WRITE_TOKEN) {
+      console.error('Missing BLOB_READ_WRITE_TOKEN');
+      return res.status(500).json({ error: 'Server misconfiguration: missing BLOB_READ_WRITE_TOKEN' });
+    }
+
     for (const blobItem of blobs) {
       try {
-        // Fetch the blob content by URL
-        const response = await fetch(blobItem.url);
-        if (!response.ok) continue;
+        // Fetch the blob content by URL using server-side token
+        const response = await fetch(blobItem.url, {
+          headers: {
+            Authorization: `Bearer ${process.env.BLOB_READ_WRITE_TOKEN}`,
+            Accept: 'application/json',
+          },
+        });
+        if (!response.ok) {
+          console.error('Non-OK response reading blob:', blobItem.url, response.status);
+          continue;
+        }
         const data = await response.json();
         entries.push(data);
       } catch (e) {
