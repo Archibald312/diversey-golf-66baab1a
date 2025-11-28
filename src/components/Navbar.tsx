@@ -40,7 +40,10 @@ const Navbar = () => {
         </a>
 
         {/* Desktop Navigation */}
-        
+        <nav className="hidden md:flex items-center space-x-4">
+          <a href="#details" className="px-4 py-2 rounded-full font-medium text-gray-700 hover:bg-gray-100 transition-colors duration-200" style={{border: '1px solid #0b4d3a'}}>FAQs</a>
+          <a href="#details" className="px-4 py-2 rounded-full font-medium text-white" style={{backgroundColor: '#0b4d3a'}}>Join the Waitlist</a>
+        </nav>
 
         {/* Mobile menu button - increased touch target */}
         <button className="md:hidden text-gray-700 p-3 focus:outline-none" onClick={toggleMenu} aria-label={isMenuOpen ? "Close menu" : "Open menu"}>
@@ -49,27 +52,19 @@ const Navbar = () => {
       </div>
 
       {/* Mobile Navigation - improved for better touch experience */}
-      <div className={cn("fixed inset-0 z-40 bg-white flex flex-col pt-16 px-6 md:hidden transition-all duration-300 ease-in-out", isMenuOpen ? "opacity-100 translate-x-0" : "opacity-0 translate-x-full pointer-events-none")}>
+      <div className={cn("fixed inset-0 z-40 bg-white flex flex-col pt-16 px-6 md:hidden transition-all duration-300 ease-in-out", isMenuOpen ? "opacity-100 translate-x-0" : "opacity-0 translate-x-full pointer-events-none")}> 
         <nav className="flex flex-col space-y-8 items-center mt-8">
-          <a href="#" className="text-xl font-medium py-3 px-6 w-full text-center rounded-lg hover:bg-gray-100" onClick={e => {
-          e.preventDefault();
-          scrollToTop();
-          setIsMenuOpen(false);
-          document.body.style.overflow = '';
-        }}>
-            Home
-          </a>
-          <a href="#features" className="text-xl font-medium py-3 px-6 w-full text-center rounded-lg hover:bg-gray-100" onClick={() => {
-          setIsMenuOpen(false);
-          document.body.style.overflow = '';
-        }}>
-            About
-          </a>
           <a href="#details" className="text-xl font-medium py-3 px-6 w-full text-center rounded-lg hover:bg-gray-100" onClick={() => {
-          setIsMenuOpen(false);
-          document.body.style.overflow = '';
-        }}>
-            Contact
+            setIsMenuOpen(false);
+            document.body.style.overflow = '';
+          }}>
+            FAQs
+          </a>
+          <a href="#details" className="text-xl font-medium py-3 px-6 w-full text-center rounded-lg hover:bg-gray-100" style={{backgroundColor: '#0b4d3a', color: '#fff'}} onClick={() => {
+            setIsMenuOpen(false);
+            document.body.style.overflow = '';
+          }}>
+            Join the Waitlist
           </a>
         </nav>
       </div>
