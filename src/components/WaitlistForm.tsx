@@ -56,7 +56,7 @@ const WaitlistForm = () => {
               Join the Waitlist
             </h2>
             <p className="text-lg sm:text-xl text-white font-normal mt-2">
-              Information about how to join the waitlist.
+              Be the first to know when we open and get exclusive founding member benefits.
             </p>
           </div>
           <div className="bg-white p-4 sm:p-8" style={{ backgroundColor: "#FFFFFF", border: "1px solid #ECECEC" }}>
