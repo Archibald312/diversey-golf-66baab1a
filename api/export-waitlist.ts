@@ -5,12 +5,7 @@ import { toCSV } from '../src/lib/csv';
 // `fetch` is available in Vercel's runtime but may not be present in local
 // TypeScript lib settings; declare it to avoid type errors during local
 // typechecking/builds.
-// Provide a minimal, well-typed `fetch` declaration that avoids `any`.
-declare function fetch(input: unknown, init?: unknown): Promise<{
-  ok: boolean;
-  status: number;
-  json: () => Promise<unknown>;
-}>;
+declare function fetch(input: string | URL, init?: RequestInit): Promise<Response>;
 
 export default async function handler(req: VercelRequest, res: VercelResponse) {
   // Require Authorization header with a server-side secret.
@@ -46,9 +41,12 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
 
     const blobToken = process.env.BLOB_READ_WRITE_TOKEN;
 
+    // Filter out blobs without URLs
+    const validBlobs = blobs.filter((b): b is { url: string } => !!b.url);
+
     // Fetch blobs concurrently with a small concurrency limit to avoid overwhelming the runtime
     const concurrency = 10;
-    const fetchBlob = async (blobItem: { url?: string }) => {
+    const fetchBlob = async (blobItem: { url: string }) => {
       try {
         const response = await fetch(blobItem.url, {
           headers: {
@@ -68,8 +66,8 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
       }
     };
 
-    for (let i = 0; i < blobs.length; i += concurrency) {
-      const chunk = blobs.slice(i, i + concurrency);
+    for (let i = 0; i < validBlobs.length; i += concurrency) {
+      const chunk = validBlobs.slice(i, i + concurrency);
       const results = await Promise.all(chunk.map(fetchBlob));
       for (const r of results) {
         if (r) entries.push(r);
