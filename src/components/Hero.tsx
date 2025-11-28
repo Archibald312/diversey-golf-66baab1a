@@ -5,7 +5,7 @@ import LottieAnimation from "./LottieAnimation";
 const Hero = () => {
   const containerRef = useRef<HTMLDivElement>(null);
   const imageRef = useRef<HTMLImageElement>(null);
-  const [lottieData, setLottieData] = useState<any>(null);
+  const [lottieData, setLottieData] = useState<unknown | null>(null);
   const [isMobile, setIsMobile] = useState(false);
   useEffect(() => {
     // Check if mobile on mount and when window resizes
@@ -111,7 +111,7 @@ const Hero = () => {
               // Slightly reduced padding for mobile
               border: '1px solid white'
             }}>
-                Join the Waitlist            
+                  Join the Waitlist
                 <ArrowRight className="ml-2 w-4 h-4 transition-transform group-hover:translate-x-1" />
               </a>
             </div>

@@ -13,7 +13,7 @@ const DetailsSection = () => {
             backgroundPosition: "center"
           }}>
               <h2 className="text-2xl sm:text-3xl font-display text-white font-bold text-center">
-                Frequently Asked Questions  
+                Frequently Asked Questions
               </h2>
             </div>
             
