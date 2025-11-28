@@ -1,4 +1,4 @@
-import { list, get } from '@vercel/blob';
+import { list } from '@vercel/blob';
 import { VercelRequest, VercelResponse } from '@vercel/node';
 
 function toCSV(rows: any[]): string {
@@ -20,20 +20,30 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
 
   try {
     // List all blobs in the waitlist/ prefix
-    const blobs = await list({ prefix: 'waitlist/' });
+    const { blobs } = await list({ prefix: 'waitlist/' });
     const entries: any[] = [];
-    for (const blob of blobs.blobs) {
-      const { blob: fileBlob } = await get(blob.pathname);
-      if (!fileBlob) continue;
-      const text = await fileBlob.text();
+
+    if (!blobs || blobs.length === 0) {
+      // No entries, return empty CSV with headers
+      const csv = 'fullName,email,company,timestamp';
+      res.setHeader('Content-Type', 'text/csv');
+      res.setHeader('Content-Disposition', 'attachment; filename="waitlist.csv"');
+      return res.status(200).send(csv);
+    }
+
+    for (const blobItem of blobs) {
       try {
-        const data = JSON.parse(text);
+        // Fetch the blob content by URL
+        const response = await fetch(blobItem.url);
+        if (!response.ok) continue;
+        const data = await response.json();
         entries.push(data);
       } catch (e) {
-        // skip invalid JSON
+        console.error('Error reading blob:', blobItem.url, e);
         continue;
       }
     }
+
     // Convert to CSV
     const csv = toCSV(entries);
     res.setHeader('Content-Type', 'text/csv');
@@ -41,6 +51,6 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
     res.status(200).send(csv);
   } catch (error) {
     console.error('Error exporting waitlist:', error);
-    res.status(500).json({ error: 'Failed to export waitlist' });
+    res.status(500).json({ error: 'Failed to export waitlist', details: String(error) });
   }
 }
