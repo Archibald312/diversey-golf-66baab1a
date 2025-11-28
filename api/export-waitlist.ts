@@ -1,17 +1,50 @@
 import { list } from '@vercel/blob';
 import { VercelRequest, VercelResponse } from '@vercel/node';
-import { toCSV } from '../src/lib/csv';
 
-// `fetch` is available in Vercel's runtime but may not be present in local
-// TypeScript lib settings; declare it to avoid type errors during local
-// typechecking/builds.
 declare function fetch(input: string | URL, init?: RequestInit): Promise<Response>;
 
+interface WaitlistEntry {
+  fullName: string;
+  email: string;
+  company?: string;
+  timestamp: string;
+}
+
+function escapeCsvField(field: string): string {
+  if (!field) return '';
+  if (field.includes(',') || field.includes('"') || field.includes('\n')) {
+    return `"${field.replace(/"/g, '""')}"`;
+  }
+  return field;
+}
+
+function toCSV(entries: unknown[]): string {
+  const headers = ['Full Name', 'Email', 'Company', 'Timestamp'];
+  
+  if (entries.length === 0) {
+    return headers.join(',') + '\n';
+  }
+  
+  const rows = entries.map((entry) => {
+    const e = entry as WaitlistEntry;
+    return [
+      escapeCsvField(e.fullName || ''),
+      escapeCsvField(e.email || ''),
+      escapeCsvField(e.company || ''),
+      escapeCsvField(e.timestamp || ''),
+    ].join(',');
+  });
+  
+  return [headers.join(','), ...rows].join('\n');
+}
+
 export default async function handler(req: VercelRequest, res: VercelResponse) {
-  // Require Authorization header with a server-side secret.
-  // Query-string based secrets are not accepted.
+  // Accept secret from either Authorization header or query parameter
   const authHeader = (req.headers.authorization || '') as string;
-  const token = authHeader.startsWith('Bearer ') ? authHeader.slice(7).trim() : authHeader.trim();
+  const headerToken = authHeader.startsWith('Bearer ') ? authHeader.slice(7).trim() : authHeader.trim();
+  const querySecret = req.query.secret as string | undefined;
+  
+  const token = headerToken || querySecret;
 
   if (!process.env.EXPORT_SECRET) {
     return res.status(403).json({ error: 'Export disabled (no EXPORT_SECRET configured)' });
@@ -27,7 +60,6 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
     const entries: unknown[] = [];
 
     if (!blobs || blobs.length === 0) {
-      // No entries, return CSV header only
       const csv = toCSV([]);
       res.setHeader('Content-Type', 'text/csv');
       res.setHeader('Content-Disposition', 'attachment; filename="waitlist.csv"');
@@ -40,11 +72,9 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
     }
 
     const blobToken = process.env.BLOB_READ_WRITE_TOKEN;
-
-    // Filter out blobs without URLs
     const validBlobs = blobs.filter((b): b is { url: string } => !!b.url);
 
-    // Fetch blobs concurrently with a small concurrency limit to avoid overwhelming the runtime
+    // Fetch blobs concurrently
     const concurrency = 10;
     const fetchBlob = async (blobItem: { url: string }) => {
       try {
@@ -74,13 +104,11 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
       }
     }
 
-    // Convert to CSV; if entries empty (all reads failed) we'll still emit a header
     const csv = toCSV(entries);
     res.setHeader('Content-Type', 'text/csv');
     res.setHeader('Content-Disposition', 'attachment; filename="waitlist.csv"');
     res.status(200).send(csv);
   } catch (error) {
-    // Log details server-side but return a generic error to clients to avoid leaking internals
     console.error('Error exporting waitlist:', error);
     res.status(500).json({ error: 'Failed to export waitlist' });
   }
