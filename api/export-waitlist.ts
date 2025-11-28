@@ -23,7 +23,7 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
     const blobs = await list({ prefix: 'waitlist/' });
     const entries: any[] = [];
     for (const blob of blobs.blobs) {
-      const { blob: fileBlob } = await get(blob.url);
+      const { blob: fileBlob } = await get(blob.pathname);
       if (!fileBlob) continue;
       const text = await fileBlob.text();
       try {
