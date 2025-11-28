@@ -5,7 +5,6 @@ import * as crypto from 'crypto';
 interface WaitlistEntry {
   fullName: string;
   email: string;
-  company?: string;
   timestamp: string;
 }
 
@@ -41,7 +40,7 @@ export default async function handler(
   }
 
   try {
-    const { fullName, email, company } = request.body;
+    const { fullName, email } = request.body;
 
     // Simple rate limiting (in-memory, best-effort for serverless)
     // normalize X-Forwarded-For which can be string | string[] | undefined
@@ -106,7 +105,6 @@ export default async function handler(
     const entry: WaitlistEntry = {
       fullName,
       email,
-      company: company || '',
       timestamp: new Date().toISOString(),
     };
 

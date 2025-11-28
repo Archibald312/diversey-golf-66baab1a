@@ -6,7 +6,6 @@ declare function fetch(input: string | URL, init?: RequestInit): Promise<Respons
 interface WaitlistEntry {
   fullName: string;
   email: string;
-  company?: string;
   timestamp: string;
 }
 
@@ -19,7 +18,7 @@ function escapeCsvField(field: string): string {
 }
 
 function toCSV(entries: unknown[]): string {
-  const headers = ['Full Name', 'Email', 'Company', 'Timestamp'];
+  const headers = ['Full Name', 'Email', 'Timestamp'];
   
   if (entries.length === 0) {
     return headers.join(',') + '\n';
@@ -30,7 +29,6 @@ function toCSV(entries: unknown[]): string {
     return [
       escapeCsvField(e.fullName || ''),
       escapeCsvField(e.email || ''),
-      escapeCsvField(e.company || ''),
       escapeCsvField(e.timestamp || ''),
     ].join(',');
   });
