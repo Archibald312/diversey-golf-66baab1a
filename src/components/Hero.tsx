@@ -99,7 +99,7 @@ const Hero = () => {
             <div className="flex flex-col sm:flex-row gap-4 opacity-0 animate-fade-in" style={{
             animationDelay: "0.7s"
           }}>
-              <a href="#waitlist" className="flex items-center justify-center group w-full sm:w-auto text-center" style={{
+              <a href="#waitlist" className="flex items-center justify-center group w-full sm:w-auto text-center font-medium" style={{
               backgroundColor: '#0b4d3a',
               borderRadius: '1440px',
               boxSizing: 'border-box',
