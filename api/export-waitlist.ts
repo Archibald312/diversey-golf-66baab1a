@@ -56,7 +56,16 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
   try {
     // List all blobs in the waitlist/ prefix
     const listRes = await list({ prefix: 'waitlist/' });
-    const blobs = (listRes as unknown as { blobs?: Array<{ url?: string }> })?.blobs ?? [];
+    const allBlobs = (listRes as unknown as { blobs?: Array<{ url?: string; pathname?: string }> })?.blobs ?? [];
+    
+    // Filter out index files (they contain email addresses in the filename)
+    const blobs = allBlobs.filter(blob => {
+      const pathname = blob.pathname || '';
+      // Only include files that are hash filenames (64 hex chars), not email-based index files
+      const filename = pathname.split('/').pop() || '';
+      return /^[a-f0-9]{64}\.json$/.test(filename);
+    });
+    
     const entries: unknown[] = [];
 
     if (!blobs || blobs.length === 0) {
