@@ -55,9 +55,9 @@ const WaitlistForm = () => {
             <h2 className="text-2xl sm:text-3xl font-display text-white font-bold mt-auto">
               Join the Waitlist
             </h2>
-            <h3 className="text-2xl sm:text-3xl font-display text-white font-bold mt-auto">
+            <p className="text-lg sm:text-xl text-white font-normal mt-2">
               Information about how to join the waitlist.
-            </h3>
+            </p>
           </div>
           <div className="bg-white p-4 sm:p-8" style={{ backgroundColor: "#FFFFFF", border: "1px solid #ECECEC" }}>
             <form onSubmit={handleSubmit} className="space-y-4 sm:space-y-6">
