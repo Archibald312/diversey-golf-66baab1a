@@ -1,4 +1,4 @@
-import { put } from '@vercel/blob';
+import { put, list } from '@vercel/blob';
 import { VercelRequest, VercelResponse } from '@vercel/node';
 
 interface WaitlistEntry {
@@ -39,6 +39,15 @@ export default async function handler(
     if (!fullName || !email) {
       return response.status(400).json({
         error: 'Full name and email are required',
+      });
+    }
+
+    // Prevent duplicate email entries
+    const prefix = `waitlist/${email}`;
+    const existing = await list({ prefix });
+    if (existing.blobs && existing.blobs.length > 0) {
+      return response.status(409).json({
+        error: 'This email is already on the waitlist.',
       });
     }
 
