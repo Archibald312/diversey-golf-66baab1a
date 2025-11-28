@@ -17,7 +17,7 @@ const DetailsSection = () => {
       [name]: value
     }));
   };
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
 
     // Simple validation
@@ -26,15 +26,34 @@ const DetailsSection = () => {
       return;
     }
 
-    // Demo form submission
-    toast.success("Request submitted successfully!");
+    try {
+      // Call the API route to save to Vercel Blob
+      const response = await fetch('/api/join-waitlist', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(formData),
+      });
 
-    // Reset form
-    setFormData({
-      fullName: "",
-      email: "",
-      company: ""
-    });
+      if (!response.ok) {
+        const errorData = await response.json();
+        toast.error(errorData.error || "Failed to join waitlist");
+        return;
+      }
+
+      toast.success("Request submitted successfully!");
+
+      // Reset form
+      setFormData({
+        fullName: "",
+        email: "",
+        company: ""
+      });
+    } catch (error) {
+      console.error('Error submitting form:', error);
+      toast.error("An error occurred. Please try again.");
+    }
   };
   return <section id="details" className="w-full bg-white py-0">
       <div className="container px-4 sm:px-6 lg:px-8 mx-auto">
@@ -141,6 +160,10 @@ const DetailsSection = () => {
                 
                 <div>
                   <input type="email" name="email" value={formData.email} onChange={handleChange} placeholder="Email address" className="w-full px-4 py-3 rounded-xl border border-gray-300 focus:outline-none focus:ring-2 focus:ring-pulse-500 focus:border-transparent" required />
+                </div>
+
+                <div>
+                  <input type="text" name="company" value={formData.company} onChange={handleChange} placeholder="Company (optional)" className="w-full px-4 py-3 rounded-xl border border-gray-300 focus:outline-none focus:ring-2 focus:ring-pulse-500 focus:border-transparent" />
                 </div>
              
                 <div>
