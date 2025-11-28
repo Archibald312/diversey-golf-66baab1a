@@ -28,7 +28,7 @@ const DetailsSection = () => {
                     How much is the monthly membership?
                   </AccordionTrigger>
                   <AccordionContent>
-                    Founding members pay $200 per month with long-term commitment.
+                    Founding members pay $200 per month with no long-term commitment.
                   </AccordionContent>
                 </AccordionItem>
 
