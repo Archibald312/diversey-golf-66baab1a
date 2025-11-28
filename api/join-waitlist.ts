@@ -88,7 +88,7 @@ export default async function handler(
     }
 
     const encodedEmail = encodeURIComponent(email.toLowerCase());
-    const indexPrefix = `waitlist-index/${encodedEmail}`;
+    const indexPrefix = `waitlist/${encodedEmail}`;
     // Run list with targeted error handling so we can see if blob list fails
     type ListResult = { blobs?: unknown[] };
     let existingIndex: ListResult | undefined;
