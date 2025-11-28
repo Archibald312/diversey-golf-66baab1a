@@ -93,7 +93,7 @@ const Hero = () => {
             <p style={{
             animationDelay: "0.5s"
           }} className="section-subtitle mt-3 sm:mt-6 mb-4 sm:mb-8 leading-relaxed opacity-0 animate-fade-in text-gray-950 font-normal text-base sm:text-lg text-left">
-              Experience golf on your schedule with our premium indoor simulator facility and monthly membership.
+              Coming soon to Lakeview East: Monthly membership gets you round-the-clock access to our premium indoor simulators.
             </p>
             
             <div className="flex flex-col sm:flex-row gap-4 opacity-0 animate-fade-in" style={{
