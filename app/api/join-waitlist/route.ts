@@ -38,11 +38,14 @@ export default async function handler(
     // Generate a unique filename using email and timestamp
     const filename = `waitlist/${email}-${Date.now()}.json`;
 
-    // Save to Vercel Blob
+    // Save to Vercel Blob - the blob store is configured via BLOB_READ_WRITE_TOKEN environment variable
+    // which should be set to your waitlist-storage blob store token
     const blob = await put(filename, JSON.stringify(entry, null, 2), {
       access: 'public',
       contentType: 'application/json',
     });
+
+    console.log('Waitlist entry saved:', filename);
 
     return response.status(201).json({
       success: true,
@@ -55,7 +58,8 @@ export default async function handler(
   } catch (error) {
     console.error('Error saving to Vercel Blob:', error);
     return response.status(500).json({
-      error: 'Failed to save waitlist entry',
+      error: 'Failed to save waitlist entry. Please try again later.',
+      details: error instanceof Error ? error.message : 'Unknown error',
     });
   }
 }
