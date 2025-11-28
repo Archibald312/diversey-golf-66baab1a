@@ -12,6 +12,21 @@ export default async function handler(
   request: VercelRequest,
   response: VercelResponse
 ) {
+  // Set CORS headers
+  response.setHeader('Access-Control-Allow-Credentials', 'true');
+  response.setHeader('Access-Control-Allow-Origin', '*');
+  response.setHeader('Access-Control-Allow-Methods', 'GET,OPTIONS,PATCH,DELETE,POST,PUT');
+  response.setHeader(
+    'Access-Control-Allow-Headers',
+    'X-CSRF-Token, X-Requested-With, Accept, Accept-Version, Content-Length, Content-MD5, Content-Type, Date, X-Api-Version'
+  );
+
+  // Handle preflight
+  if (request.method === 'OPTIONS') {
+    response.status(200).end();
+    return;
+  }
+
   // Only allow POST requests
   if (request.method !== 'POST') {
     return response.status(405).json({ error: 'Method not allowed' });
@@ -38,8 +53,7 @@ export default async function handler(
     // Generate a unique filename using email and timestamp
     const filename = `waitlist/${email}-${Date.now()}.json`;
 
-    // Save to Vercel Blob - the blob store is configured via BLOB_READ_WRITE_TOKEN environment variable
-    // which should be set to your waitlist-storage blob store token
+    // Save to Vercel Blob
     const blob = await put(filename, JSON.stringify(entry, null, 2), {
       access: 'public',
       contentType: 'application/json',
