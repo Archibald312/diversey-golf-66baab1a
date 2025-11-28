@@ -116,7 +116,7 @@ export default async function handler(
 
     // Save to Vercel Blob (public by default)
     // Use any-typed options to avoid type mismatch with SDK typings
-    const putOpts = { access: 'private', contentType: 'application/json' } as const;
+    const putOpts = { access: 'public', contentType: 'application/json' } as const;
     let blob: unknown;
     try {
       blob = await put(filename, JSON.stringify(entry, null, 2), putOpts);
@@ -126,7 +126,7 @@ export default async function handler(
     }
 
     // Create an index marker so we can quickly check duplicates by email
-    const indexPutOpts = { access: 'private', contentType: 'application/json' } as const;
+    const indexPutOpts = { access: 'public', contentType: 'application/json' } as const;
     try {
       await put(`${indexPrefix}.json`, JSON.stringify({ filename, timestamp: entry.timestamp }), indexPutOpts);
     } catch (err) {
@@ -141,7 +141,7 @@ export default async function handler(
       success: true,
       message: 'Successfully joined the waitlist',
       data: {
-        // blob.url may be signed or inaccessible if private; include internal pathname
+        // blob.url may be signed or inaccessible if public; include internal pathname
         filename: (blob as { pathname?: string })?.pathname,
       },
     });
