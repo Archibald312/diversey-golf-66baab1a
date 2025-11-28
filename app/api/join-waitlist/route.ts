@@ -1,7 +1,5 @@
 import { put } from '@vercel/blob';
-import { NextRequest, NextResponse } from 'next/server';
-
-export const runtime = 'nodejs';
+import { VercelRequest, VercelResponse } from '@vercel/node';
 
 interface WaitlistEntry {
   fullName: string;
@@ -10,17 +8,23 @@ interface WaitlistEntry {
   timestamp: string;
 }
 
-export async function POST(request: NextRequest) {
+export default async function handler(
+  request: VercelRequest,
+  response: VercelResponse
+) {
+  // Only allow POST requests
+  if (request.method !== 'POST') {
+    return response.status(405).json({ error: 'Method not allowed' });
+  }
+
   try {
-    const body = await request.json();
-    const { fullName, email, company } = body;
+    const { fullName, email, company } = request.body;
 
     // Validate required fields
     if (!fullName || !email) {
-      return NextResponse.json(
-        { error: 'Full name and email are required' },
-        { status: 400 }
-      );
+      return response.status(400).json({
+        error: 'Full name and email are required',
+      });
     }
 
     // Create a new waitlist entry
@@ -36,34 +40,22 @@ export async function POST(request: NextRequest) {
 
     // Save to Vercel Blob
     const blob = await put(filename, JSON.stringify(entry, null, 2), {
-      access: 'private',
+      access: 'public',
       contentType: 'application/json',
     });
 
-    return NextResponse.json(
-      {
-        success: true,
-        message: 'Successfully joined the waitlist',
-        data: {
-          url: blob.url,
-          filename: blob.pathname,
-        },
+    return response.status(201).json({
+      success: true,
+      message: 'Successfully joined the waitlist',
+      data: {
+        url: blob.url,
+        filename: blob.pathname,
       },
-      { status: 201 }
-    );
+    });
   } catch (error) {
     console.error('Error saving to Vercel Blob:', error);
-    return NextResponse.json(
-      { error: 'Failed to save waitlist entry' },
-      { status: 500 }
-    );
+    return response.status(500).json({
+      error: 'Failed to save waitlist entry',
+    });
   }
-}
-
-// Optional: GET endpoint to check if email is already on waitlist
-export async function GET(request: NextRequest) {
-  return NextResponse.json(
-    { message: 'Use POST to join the waitlist' },
-    { status: 405 }
-  );
 }
