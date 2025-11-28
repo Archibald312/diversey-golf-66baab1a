@@ -110,8 +110,12 @@ export default async function handler(
       timestamp: new Date().toISOString(),
     };
 
-    // Generate a unique filename using a hash (don't embed raw PII in object names)
-    const hash = crypto.createHash('sha256').update(email + '|' + Date.now().toString()).digest('hex');
+    // Generate a cryptographically secure unique filename
+    // Combine email, timestamp, and random bytes for unpredictability
+    const randomBytes = crypto.randomBytes(16).toString('hex');
+    const hash = crypto.createHash('sha256')
+      .update(email + '|' + Date.now().toString() + '|' + randomBytes)
+      .digest('hex');
     const filename = `waitlist/${hash}.json`;
 
     // Save to Vercel Blob (public by default)
