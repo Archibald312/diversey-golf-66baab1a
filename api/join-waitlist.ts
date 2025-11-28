@@ -114,7 +114,7 @@ export default async function handler(
     const hash = crypto.createHash('sha256').update(email + '|' + Date.now().toString()).digest('hex');
     const filename = `waitlist/${hash}.json`;
 
-    // Save to Vercel Blob (private by default)
+    // Save to Vercel Blob (public by default)
     // Use any-typed options to avoid type mismatch with SDK typings
     const putOpts = { access: 'private', contentType: 'application/json' } as const;
     let blob: unknown;
