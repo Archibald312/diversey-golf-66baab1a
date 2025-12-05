@@ -40,7 +40,12 @@ export default async function handler(
   }
 
   try {
-    const { fullName, email } = request.body;
+    const { fullName, email, website } = request.body;
+
+    // Honeypot check - if filled, it's a bot
+    if (website) {
+      return response.status(400).json({ error: 'Spam detected' });
+    }
 
     // Simple rate limiting (in-memory, best-effort for serverless)
     // normalize X-Forwarded-For which can be string | string[] | undefined

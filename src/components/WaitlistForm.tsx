@@ -4,7 +4,8 @@ import { toast } from "sonner";
 const WaitlistForm = () => {
   const [formData, setFormData] = useState({
     fullName: "",
-    email: ""
+    email: "",
+    website: "" // honeypot field
   });
   
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -36,7 +37,7 @@ const WaitlistForm = () => {
         return;
       }
       toast.success("Request submitted successfully!");
-      setFormData({ fullName: "", email: "" });
+      setFormData({ fullName: "", email: "", website: "" });
     } catch (error) {
       console.error('Error submitting form:', error);
       toast.error("An error occurred. Please try again.");
@@ -61,6 +62,18 @@ const WaitlistForm = () => {
           </div>
           <div className="bg-white p-4 sm:p-8" style={{ backgroundColor: "#FFFFFF", border: "1px solid #ECECEC" }}>
             <form onSubmit={handleSubmit} className="space-y-4 sm:space-y-6">
+              {/* Honeypot field - hidden from humans, visible to bots */}
+              <div style={{ position: 'absolute', left: '-5000px' }} aria-hidden="true">
+                <input 
+                  type="text" 
+                  name="website" 
+                  value={formData.website} 
+                  onChange={handleChange} 
+                  placeholder="Your website"
+                  tabIndex={-1}
+                  autoComplete="off"
+                />
+              </div>
               <div>
                 <input 
                   type="text" 
