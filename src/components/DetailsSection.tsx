@@ -73,7 +73,7 @@ const DetailsSection = () => {
                     What are your hours?
                   </AccordionTrigger>
                   <AccordionContent>
-                    Our simulators are available 24/7 with your membership. You'll have key card access to play anytime.
+                    Our simulators are available 24/7/365 with your membership. You'll have key card access to play anytime.
                   </AccordionContent>
                 </AccordionItem>
               </Accordion>
