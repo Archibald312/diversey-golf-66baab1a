@@ -1,7 +1,7 @@
 # 🎯 SECURITY AUDIT: FINAL DELIVERABLES
 
 **Date**: November 28, 2025  
-**Project**: Diversey Golf Website Security Review  
+**Project**: Diversey Indoor Golf Website Security Review  
 **Status**: ✅ **COMPLETE** — All critical issues fixed; staged upgrades ready
 
 ---

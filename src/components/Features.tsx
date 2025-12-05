@@ -75,7 +75,7 @@ const Features = () => {
         <div className="text-center mb-10 sm:mb-16">
           
           <h2 className="section-title mb-3 sm:mb-4 opacity-0 fade-in-element">
-            Why Join Diversey Golf
+            Why Join Diversey Indoor Golf
           </h2>
           <p className="section-subtitle mx-auto opacity-0 fade-in-element">
             Experience golf like never before with our cutting-edge facilities and unmatched flexibility

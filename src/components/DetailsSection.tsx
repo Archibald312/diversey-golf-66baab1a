@@ -34,19 +34,19 @@ const DetailsSection = () => {
 
                 <AccordionItem value="item-2">
                   <AccordionTrigger className="text-left font-semibold">
-                    When will Diversey Golf open?
+                    When will Diversey Indoor Golf open?
                   </AccordionTrigger>
                   <AccordionContent>
-                    Diversey Golf is scheduled to open in the winter of 2026. Join the waitlist for updates on our progress.
+                    Diversey Indoor Golf is scheduled to open in the winter of 2026. Join the waitlist for updates on our progress.
                   </AccordionContent>
                 </AccordionItem>
 
                 <AccordionItem value="item-3">
                   <AccordionTrigger className="text-left font-semibold">
-                    Where will Diversey Golf be located?
+                    Where will Diversey Indoor Golf be located?
                   </AccordionTrigger>
                   <AccordionContent>
-                    Diversey Golf will be located within a 10-minute walk of Clark & Diversey.
+                    Diversey Indoor Golf will be located within a 10-minute walk of Clark & Diversey.
                   </AccordionContent>
                 </AccordionItem>
 

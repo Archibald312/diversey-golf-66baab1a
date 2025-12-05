@@ -35,8 +35,8 @@ const Navbar = () => {
         <a href="#" className="flex items-center space-x-2" onClick={e => {
         e.preventDefault();
         scrollToTop();
-      }} aria-label="Diversey Golf">
-          <img src="/diversey-golf-logo.png" alt="Diversey Golf Logo" className="h-20 sm:h-24" />
+      }} aria-label="Diversey Indoor Golf">
+          <img src="/diversey-golf-logo.png" alt="Diversey Indoor Golf Logo" className="h-20 sm:h-24" />
         </a>
 
         {/* Desktop Navigation */}

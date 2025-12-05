@@ -1,4 +1,4 @@
-# Executive Security Report: Diversey Golf Website
+# Executive Security Report: Diversey Indoor Golf Website
 
 **Date**: November 28, 2025  
 **Scope**: Full stack security review (Frontend, Backend API, Storage, CI/CD, Dependencies)  
@@ -8,7 +8,7 @@
 
 ## 1. Executive Summary
 
-This report documents findings from a comprehensive security penetration test of the Diversey Golf website (React/Vite frontend, Node.js serverless backend, Vercel infrastructure).
+This report documents findings from a comprehensive security penetration test of the Diversey Indoor Golf website (React/Vite frontend, Node.js serverless backend, Vercel infrastructure).
 
 **Key Findings**:
 - ✅ **8 Critical/High Issues**: Identified in API handlers and blob storage; **all patched**

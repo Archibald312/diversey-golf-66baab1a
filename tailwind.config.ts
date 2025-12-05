@@ -64,7 +64,7 @@ const config = {
 					border: 'hsl(var(--sidebar-border))',
 					ring: 'hsl(var(--sidebar-ring))'
 				},
-				// Custom colors for Diversey Golf
+				// Custom colors for Diversey Indoor Golf
 				pulse: {
 					"50": "#e6f5f1",
 					"100": "#ccebe3",
