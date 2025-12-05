@@ -64,7 +64,7 @@ const DetailsSection = () => {
                     Can I bring friends?
                   </AccordionTrigger>
                   <AccordionContent>
-                    Absolutely! You're welcome to bring friends and family to enjoy the simulators with you during your sessions. We suggest that you limit guests to three.
+                    Absolutely! You're welcome to bring up to three guests to enjoy the simulators with you during your session.
                   </AccordionContent>
                 </AccordionItem>
 
