@@ -1,6 +1,6 @@
-import React, { useState } from "react";
-import { toast } from "sonner";
+import React from "react";
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
+
 const DetailsSection = () => {
   return <section id="faq" className="w-full bg-white py-0">
       <div className="container px-4 sm:px-6 lg:px-8 mx-auto">
